@@ -1,0 +1,147 @@
+Q1) Access Modifiers:
+In Java, there are four access modifiers that control the visibility of classes, methods, and variables:
+
+1. public:
+
+Accessibility: Accessible from any other class in any package.
+
+Significance: Use this modifier when you want to allow universal access to a class, method, or variable.
+
+Example:
+
+// File: PublicExample.java
+public class PublicExample {
+    public int publicVariable = 10;
+
+    public void publicMethod() {
+        System.out.println("Public method called.");
+    }
+}
+
+Usage:
+
+// File: TestPublic.java
+public class TestPublic {
+    public static void main(String[] args) {
+        PublicExample obj = new PublicExample();
+        System.out.println(obj.publicVariable); // Accessible
+        obj.publicMethod(); // Accessible
+    }
+}
+
+2. protected:
+
+Accessibility: Accessible within the same package and by subclasses (even if they are in different packages).
+
+Significance: This is useful for inheritance, allowing subclasses to use or override methods while still 
+restricting access from unrelated classes.
+
+Example:
+// File: ProtectedExample.java
+public class ProtectedExample {
+    protected int protectedVariable = 20;
+
+    protected void protectedMethod() {
+        System.out.println("Protected method called.");
+    }
+}
+
+// File: SubClassExample.java
+public class SubClassExample extends ProtectedExample {
+    public void display() {
+        System.out.println(protectedVariable); // Accessible in subclass
+        protectedMethod(); // Accessible in subclass
+    }
+}
+
+Usage:
+
+// File: TestProtected.java
+public class TestProtected {
+    public static void main(String[] args) {
+        SubClassExample obj = new SubClassExample();
+        obj.display(); // Calls subclass method which accesses protected members
+    }
+}
+
+
+3. default (no modifier):
+
+Accessibility: Accessible only within classes in the same package.
+
+Significance: This is the default level of access if no modifier is specified. 
+It promotes encapsulation by limiting visibility to related classes.
+
+Example:
+
+// File: DefaultExample.java
+class DefaultExample {
+    int defaultVariable = 30;
+
+    void defaultMethod() {
+        System.out.println("Default method called.");
+    }
+}
+
+Usage:
+
+// File: TestDefault.java (same package)
+public class TestDefault {
+    public static void main(String[] args) {
+        DefaultExample obj = new DefaultExample();
+        System.out.println(obj.defaultVariable); // Accessible
+        obj.defaultMethod(); // Accessible
+    }
+}
+
+4. private:
+
+Accessibility: Accessible only within the same class.
+
+Significance: This is used to restrict access and protect class members from being modified or 
+accessed externally, ensuring encapsulation and data hiding.
+
+These modifiers help manage the accessibility of classes, methods and variables, 
+Promoting better encapsulation and code organization in object-oriented programming.
+
+Example:
+
+// File: PrivateExample.java
+public class PrivateExample {
+    private int privateVariable = 40;
+
+    private void privateMethod() {
+        System.out.println("Private method called.");
+    }
+
+    public void accessPrivate() {
+        System.out.println(privateVariable); // Accessible within the class
+        privateMethod(); // Accessible within the class
+    }
+}
+
+Usage:
+
+// File: TestPrivate.java
+public class TestPrivate {
+    public static void main(String[] args) {
+        PrivateExample obj = new PrivateExample();
+        obj.accessPrivate(); // Can access private members via public method
+        
+        // obj.privateVariable; // Not accessible (compile error)
+        // obj.privateMethod(); // Not accessible (compile error)
+    }
+}
+
+Summary
+
+public: Open access from anywhere.
+
+protected: Access within the package and through inheritance.
+
+default: Package-private access, limited to the same package.
+
+private: Restricted access within the same class only.
+
+
+These modifiers help in designing robust applications by controlling the visibility and access to class members.

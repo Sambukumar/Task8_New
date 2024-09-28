@@ -1,0 +1,67 @@
+Q3
+Exceptions:
+
+Exceptions are events that occur during the execution of a program that disrupt the normal flow of 
+instructions. They are typically conditions that a program can anticipate and handle.
+Example of an Exception:
+java
+public class ExceptionExample {
+    public static void main(String[] args) {
+        try {
+            int[] numbers = {1, 2, 3};
+            System.out.println(numbers[5]); // This will throw an ArrayIndexOutOfBoundsException
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Caught an exception: " + e.getMessage());
+        }
+    }
+}
+
+There are 2 types of Exceptions
+1)Checked Exceptions: 
+Checked exceptions are exceptions that are checked at compile time. This means that the compiler verifies whether 
+these exceptions are properly handled or declared in the method signature.
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class ArithmeticCheckedExceptionExample {
+    public static void main(String[] args) {
+    Scanner s= new Scanner(System.in);
+        
+        try {
+            System.out.print("Enter the numerator: ");
+            int numerator = s.nextInt();
+            System.out.print("Enter the denominator: ");
+            int denominator = s.nextInt();
+
+			// Perform division
+            int result = numerator / denominator;
+            System.out.println("Result: " + result);
+        } catch (IOException e) {
+            System.out.println("Caught an IOException: " + e.getMessage());
+        } catch (ArithmeticException e) {
+            System.out.println("Caught an ArithmeticException: Cannot divide by zero.");
+        } catch (NumberFormatException e) {
+            System.out.println("Caught a NumberFormatException: Please enter valid integers.");
+        }
+    }
+}
+
+2)Unchecked exceptions:
+Unchecked exceptions are exceptions that are not checked at compile time. 
+They are subclasses of RuntimeException and Error. 
+The compiler does not require these exceptions to be handled or declared.
+
+public class UncheckedExceptionExample {
+    public static void main(String[] args) {
+        try {
+            int[] numbers = {1, 2, 3};
+            System.out.println(numbers[5]); // This will throw an ArrayIndexOutOfBoundsException
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Caught an unchecked exception: " + e.getMessage());
+        }
+    }
+}
+
+
